@@ -45,21 +45,20 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 		}
 		
 		setFields();
-		
 		start();
-		
 		start = location.clone();
 	}
 
 	private void setFields() {
 		
+		this.cooldown = ConfigManager.getConfig().getLong("ExtraAbilities.xNuminousx.ScaredWet.Cooldown");
+		this.range = ConfigManager.getConfig().getInt("ExtraAbilities.xNuminousx.ScaredWet.Range");
 		this.spookyTitle = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.ScaredWet.SpookyTitle");
 		this.spookyMessage = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.ScaredWet.SpookyMessage");
 		
 		this.origin = player.getLocation().clone().add(0, 1, 0);
 		this.location = origin;
 		this.direction = player.getLocation().getDirection().clone();
-		this.range = 20;
 		this.blockType = Material.OBSIDIAN;
 		
 	}
@@ -161,7 +160,7 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 
 	@Override
 	public boolean isHarmlessAbility() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -182,6 +181,8 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 		ProjectKorra.plugin.getServer().getPluginManager().addPermission(perm);
 		perm.setDefault(PermissionDefault.TRUE);
 		
+		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.Cooldown", 8000);
+		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.Range", 20);
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.SpookyTitle", "Jeepers creepers!");
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.SpookyMessage", "I'm excreting moisture!!!");
 		ConfigManager.defaultConfig.save();
