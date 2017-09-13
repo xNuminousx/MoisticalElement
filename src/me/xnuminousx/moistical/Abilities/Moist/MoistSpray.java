@@ -82,7 +82,7 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 1.5)) {
 			if (entity instanceof LivingEntity && entity.getUniqueId() != player.getUniqueId()) {
 				show();
-				player.sendMessage(ChatColor.AQUA + borderOne() + ChatColor.DARK_AQUA + getMessage() + ChatColor.AQUA + borderTwo());
+				entity.sendMessage(ChatColor.AQUA + borderOne() + ChatColor.DARK_AQUA + getMessage() + ChatColor.AQUA + borderTwo());
 				remove();
 				return;
 			}
