@@ -70,6 +70,7 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 		ParticleEffect.SPLASH.display(location, (float) x, 0.5F, (float) z, 0F, 2);
 		}
 	}
+	@SuppressWarnings("deprecation")
 	public void barrierEffect() {
 		radius = 4;
 		Location location = player.getLocation();
@@ -84,7 +85,7 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 		}
 		for (Player target : GeneralMethods.getPlayersAroundPoint(location, radius)) {
 			if (((target instanceof LivingEntity)) && (target.getEntityId() != player.getEntityId())) {
-				target.sendMessage(ChatColor.DARK_AQUA + getMessage());
+				target.sendTitle(" ", ChatColor.DARK_AQUA + getMessage());
 				remove();
 			}
 		}
