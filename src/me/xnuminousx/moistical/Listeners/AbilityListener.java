@@ -25,9 +25,9 @@ public class AbilityListener implements Listener {
 			return;
 		}
 		if (bPlayer.isElementToggled(MoisticalElement.MOISTICAL)) {
-			if (bPlayer.getBoundAbility().getName().equalsIgnoreCase("MoistSpray")) {
+			if (bPlayer.getBoundAbility().getName().equalsIgnoreCase("MoistSpray") && (player.hasPermission("bending.ability.moistspray"))) {
 				new MoistSpray(player);
-			} else if (bPlayer.getBoundAbility().getName().equalsIgnoreCase("ScaredWet")) {
+			} else if (bPlayer.getBoundAbility().getName().equalsIgnoreCase("ScaredWet") && (player.hasPermission("bending.ability.scaredwet"))) {
 				new ScaredWet(player);
 			}
 		}
@@ -43,7 +43,7 @@ public class AbilityListener implements Listener {
 			return;
 		}
 		if (bPlayer.isElementToggled(MoisticalElement.MOISTICAL)) {
-			if (bPlayer.getBoundAbility().getName().equalsIgnoreCase("MoistyBarrier")) {
+			if (bPlayer.getBoundAbility().getName().equalsIgnoreCase("MoistyBarrier") && (player.hasPermission("bending.ability.moistybarrier"))) {
 				new MoistyBarrier(player);
 			}
 		}
