@@ -58,6 +58,7 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		this.location = origin;
 		this.direction = player.getLocation().getDirection().clone();
 	}
+	
 	@Override
 	public void progress() {
 		if (player.isDead() || !player.isOnline()) {
@@ -82,7 +83,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 1.5)) {
 			if (entity instanceof LivingEntity && entity.getUniqueId() != player.getUniqueId()) {
 				show();
-				entity.sendMessage(ChatColor.AQUA + borderOne() + ChatColor.DARK_AQUA + getMessage() + ChatColor.AQUA + borderTwo());
 				remove();
 				return;
 			}
@@ -94,6 +94,7 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void show() {
 		for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 1.5)) {
 			Location target = entity.getLocation().add(0, 1, 0);
@@ -106,6 +107,9 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 				ParticleEffect.SPLASH.display(target, (float) x, (float) radius, (float) z, 0.05F, 2);
 				target.getWorld().playSound(location, Sound.ENTITY_SLIME_SQUISH, 0.3F, 1);
 			}
+		}
+		for (Player target : GeneralMethods.getPlayersAroundPoint(location, 1.5)) {
+			target.sendTitle(" ", ChatColor.AQUA + borderOne() + ChatColor.DARK_AQUA + getMessage() + ChatColor.AQUA + borderTwo());
 		}
 	}
 	

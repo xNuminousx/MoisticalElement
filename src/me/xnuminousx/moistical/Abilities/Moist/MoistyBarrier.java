@@ -54,8 +54,8 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 			barrierDisplay();
 			barrierEffect();
 		} else {
-			remove();
 			bPlayer.addCooldown(this);
+			remove();
 			return;
 		}
 	}
@@ -78,17 +78,17 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 				LivingEntity le = (LivingEntity)entity;
 				le.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 40, 1), true);
 				le.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200, 1), true);
-			}
-		}
-		for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, radius)) {
-			if (((entity instanceof LivingEntity)) && (entity.getEntityId() != player.getEntityId())) {
 				entity.getWorld().playSound(location, Sound.ENTITY_SLIME_SQUISH, 0.3F, 1);
-				player.sendMessage(ChatColor.DARK_AQUA + getMessage());
 				remove();
-				bPlayer.addCooldown(this);
-				return;
 			}
 		}
+		for (Player target : GeneralMethods.getPlayersAroundPoint(location, radius)) {
+			if (((target instanceof LivingEntity)) && (target.getEntityId() != player.getEntityId())) {
+				target.sendMessage(ChatColor.DARK_AQUA + getMessage());
+				remove();
+			}
+		}
+		return;
 	}
 	public String getMessage() {
 		return moistymessage;
