@@ -70,7 +70,7 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 			return;
 		}
 		if (location.distanceSquared(start) > range * range) {
-			remove ();
+			remove();
 			return;
 		}
 		blast();
