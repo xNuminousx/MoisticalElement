@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.Bat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -101,23 +102,30 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 		if (GeneralMethods.isSolid(location.getBlock())) {
 			ParticleEffect.LAVA.display(location, 1, 3, 1, 0.2F, 5);
 			ParticleEffect.EXPLOSION_LARGE.display(location, 0, 2, 0, 1, 2);
-			location.getWorld().playSound(location, Sound.ENTITY_WITCH_HURT, 1, 2);
-			player.getWorld().spawn(location.add(0, 1.5F, 0), Witch.class).remove();
+			player.getWorld().spawn(location.add(0, 1, 0), Witch.class).remove();
+			location.getWorld().playSound(location, Sound.ENTITY_WITCH_AMBIENT, 2, 1);
+			location.getWorld().playSound(location, Sound.ENTITY_ENDERMEN_STARE, 1, 0.5F);
 			remove();
 			return;
 		}
 	}
+	
 	public void show() {
 		ParticleEffect.WITCH_MAGIC.display(location, 1, 1, 1, 0.05F, 5);
 		location.getWorld().playSound(location, Sound.ENTITY_LIGHTNING_THUNDER, 1, 1.5F);
-		location.getWorld().playSound(location, Sound.ENTITY_WITCH_AMBIENT, 2, 1);
+		player.getWorld().spawn(location.add(0, 1, 0), Bat.class);
 		return;
+		
 	}
+	
 	public String getMessage() {
 		return spookyMessage;
+		
 	}
+	
 	public String getTitle() {
 		return spookyTitle;
+		
 	}
 
 	@Override
