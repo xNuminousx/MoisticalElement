@@ -9,8 +9,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Witch;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
@@ -25,8 +23,7 @@ import me.xnuminousx.moistical.Abilities.FestiveAbility;
 import me.xnuminousx.moistical.Listeners.AbilityListener;
 
 public class ScaredWet extends FestiveAbility implements AddonAbility {
-
-	private Permission perm;
+	
 	private long cooldown;
 	private Location origin;
 	private Location location;
@@ -144,7 +141,7 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 	}
 	@Override
 	public String getDescription() {
-		return ChatColor.GOLD + "" + ChatColor.BOLD + "HALLOWEEN ABILITY:" + ChatColor.DARK_PURPLE + " You might just spook the moistness right out of them!";
+		return ChatColor.BLACK + "" + ChatColor.BOLD + "HALLOWEEN ABILITY:" + ChatColor.GOLD + " You might just spook the moistness right out of them!";
 	}
 	@Override
 	public String getInstructions() {
@@ -185,10 +182,6 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 	public void load() {
 		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
 		
-		perm = new Permission("bending.ability.scaredwet");
-		ProjectKorra.plugin.getServer().getPluginManager().addPermission(perm);
-		perm.setDefault(PermissionDefault.TRUE);
-		
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.Cooldown", 8000);
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.Range", 20);
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.SpookyTitle", "Jeepers creepers!");
@@ -199,7 +192,6 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 
 	@Override
 	public void stop() {
-		ProjectKorra.plugin.getServer().getPluginManager().removePermission(this.perm);
 		super.remove();
 	}
 

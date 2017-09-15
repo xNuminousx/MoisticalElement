@@ -34,7 +34,7 @@ public class AbilityListener implements Listener {
 			
 		}
 	}
-	@EventHandler (ignoreCancelled = true)
+	@EventHandler
 	public void onSneak(PlayerToggleSneakEvent event) {
 		
 		Player player = event.getPlayer();

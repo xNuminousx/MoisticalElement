@@ -6,8 +6,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.util.Vector;
 
 import com.projectkorra.projectkorra.GeneralMethods;
@@ -32,7 +30,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	private String moistymessage;
 	private String border1;
 	private String border2;
-	private Permission perm;
 
 	public MoistSpray(Player player) {
 		super(player);
@@ -184,10 +181,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	public void load() {
 		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
 		
-		perm = new Permission("bending.ability.moistspray");
-		ProjectKorra.plugin.getServer().getPluginManager().addPermission(perm);
-		perm.setDefault(PermissionDefault.TRUE);
-		
 		//Element console load message
 		ProjectKorra.log.info("Successfully loaded Moistical Element");
 		
@@ -207,7 +200,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	}
 	@Override
 	public void stop() {
-		ProjectKorra.plugin.getServer().getPluginManager().removePermission(this.perm);
 		super.remove();
 	}
 
