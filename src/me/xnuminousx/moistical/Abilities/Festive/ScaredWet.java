@@ -4,7 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.entity.Bat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -110,7 +109,6 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 	public void show() {
 		ParticleEffect.WITCH_MAGIC.display(location, 1, 1, 1, 0.05F, 5);
 		location.getWorld().playSound(location, Sound.ENTITY_LIGHTNING_THUNDER, 1, 1.5F);
-		player.getWorld().spawn(location.add(0, 1, 0), Bat.class);
 		return;
 		
 	}
