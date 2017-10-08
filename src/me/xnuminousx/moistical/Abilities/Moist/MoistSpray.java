@@ -22,7 +22,6 @@ import me.xnuminousx.moistical.Listeners.AbilityListener;
 public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	
 	private long cooldown;
-	private double range;
 	
 	
 	private Location origin;
@@ -32,6 +31,8 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	private String border1;
 	private String border2;
 	private Permission perm;
+	private long time;
+	private long duration;
 
 	public MoistSpray(Player player) {
 		super(player);
@@ -41,14 +42,15 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		}
 		
 		setFields();
+		time = System.currentTimeMillis();
 		start();
 	}
 	public void setFields() {
 		this.cooldown = ConfigManager.getConfig().getLong("ExtraAbilities.xNuminousx.MoistSpray.Cooldown");
-		this.range = ConfigManager.getConfig().getDouble("ExtraAbilities.xNuminousx.MoistSpray.Range");
 		this.border1 = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.MoistSpray.Border 1");
 		this.moistymessage = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.MoistSpray.MoistyMessage");
 		this.border2 = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.MoistSpray.Border 2");
+		this.duration = 1000;
 		
 		this.origin = player.getLocation().clone().add(0, 1, 0);
 		this.location = origin;
@@ -61,9 +63,10 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 			remove();
 			return;
 		}
-		if (origin.distanceSquared(location) > range * range) {
+		if (System.currentTimeMillis() > time + duration) {
 			remove();
 			return;
+			
 		}
 		blast();
 	}
@@ -193,7 +196,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		
 		//MoistSpray config options
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Cooldown", 5000);
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Range", 20);
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Border 1", "---");
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.MoistyMessage", "Your body increases in moistiness");
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Border 2", "---");
