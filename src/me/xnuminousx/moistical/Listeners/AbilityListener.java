@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 
 import com.projectkorra.projectkorra.BendingPlayer;
 
+import me.xnuminousx.moistical.Abilities.Festive.MerryMoistmas;
 import me.xnuminousx.moistical.Abilities.Festive.ScaredWet;
 import me.xnuminousx.moistical.Abilities.Moist.MoistSpray;
 import me.xnuminousx.moistical.Abilities.Moist.MoistyBarrier;
@@ -49,6 +50,8 @@ public class AbilityListener implements Listener {
 		} else if (bPlayer.getBoundAbilityName().equalsIgnoreCase("MoistyBarrier")) {
 			new MoistyBarrier(player);
 			
+		} else if (bPlayer.getBoundAbilityName().equalsIgnoreCase("MerryMoistmas")) {
+			new MerryMoistmas(player);
 		}
 	}
 }

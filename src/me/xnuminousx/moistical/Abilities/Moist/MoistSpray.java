@@ -6,6 +6,8 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.util.Vector;
 
 import com.projectkorra.projectkorra.GeneralMethods;
@@ -25,11 +27,11 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	
 	private Location origin;
 	private Location location;
-	private Location start;
 	private Vector direction;
 	private String moistymessage;
 	private String border1;
 	private String border2;
+	private Permission perm;
 
 	public MoistSpray(Player player) {
 		super(player);
@@ -40,10 +42,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		
 		setFields();
 		start();
-		
-		start = player.getLocation();
-		start = location.clone();
-		location = start.clone();
 	}
 	public void setFields() {
 		this.cooldown = ConfigManager.getConfig().getLong("ExtraAbilities.xNuminousx.MoistSpray.Cooldown");
@@ -51,7 +49,8 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		this.border1 = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.MoistSpray.Border 1");
 		this.moistymessage = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.MoistSpray.MoistyMessage");
 		this.border2 = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.MoistSpray.Border 2");
-		this.origin = player.getLocation().clone().add(0, 1.3, 0);
+		
+		this.origin = player.getLocation().clone().add(0, 1, 0);
 		this.location = origin;
 		this.direction = player.getLocation().getDirection().clone();
 	}
@@ -62,15 +61,14 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 			remove();
 			return;
 		}
+		if (origin.distanceSquared(location) > range * range) {
+			remove();
+			return;
+		}
 		blast();
 	}
 	
 	public void blast() {
-		if (location.distanceSquared(start) > range * range) {
-			remove ();
-			return;
-		}
-		
 		location.add(direction.multiply(1));
 		ParticleEffect.SPLASH.display(location, 0.2F, 0.2F, 0.5F, 1, 3);
 		ParticleEffect.DRIP_WATER.display(location, 0.3F, 0.2F, 0.3F, 0, 1);
@@ -184,9 +182,13 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		//Element console load message
 		ProjectKorra.log.info("Successfully loaded Moistical Element");
 		
+		perm = new Permission("bending.ability.moistspray");
+		ProjectKorra.plugin.getServer().getPluginManager().addPermission(perm);
+		perm.setDefault(PermissionDefault.TRUE);
+		
 		//Element config options
 		ConfigManager.languageConfig.get().addDefault("Chat.Colors.Moistical", "BLUE");
-		ConfigManager.languageConfig.get().addDefault("Chat.Colors.MoisticalSub", "DARK_PURPLE");
+		ConfigManager.languageConfig.get().addDefault("Chat.Colors.Festive", "DARK_PURPLE");
 		ConfigManager.languageConfig.get().addDefault("Chat.Prefixes.Moistical", "[Moist]");
 		
 		//MoistSpray config options
