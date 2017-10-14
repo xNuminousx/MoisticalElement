@@ -70,6 +70,7 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 			return;
 		}
 		if (location.distanceSquared(start) > range * range) {
+			bPlayer.addCooldown(this);
 			remove();
 			return;
 		}
@@ -85,6 +86,7 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 		for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 1.5)) {
 			if (entity instanceof LivingEntity && entity.getUniqueId() != player.getUniqueId()) {
 				show();
+				bPlayer.addCooldown(this);
 				remove();
 				return;
 			}
@@ -94,6 +96,7 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 				target.sendTitle(ChatColor.GOLD + "" + ChatColor.BOLD + getTitle(), ChatColor.BLACK + "" + getMessage());
 				target.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 1), true);
 				show();
+				bPlayer.addCooldown(this);
 				remove();
 				return;
 			}
@@ -104,6 +107,7 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 			player.getWorld().spawn(location.add(0, 1, 0), Witch.class).remove();
 			location.getWorld().playSound(location, Sound.ENTITY_WITCH_AMBIENT, 2, 1);
 			location.getWorld().playSound(location, Sound.ENTITY_ENDERMEN_STARE, 1, 0.5F);
+			bPlayer.addCooldown(this);
 			remove();
 			return;
 		}

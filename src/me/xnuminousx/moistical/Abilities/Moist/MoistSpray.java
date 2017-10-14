@@ -64,6 +64,7 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 			return;
 		}
 		if (System.currentTimeMillis() > time + duration) {
+			bPlayer.addCooldown(this);
 			remove();
 			return;
 			
@@ -81,12 +82,14 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		for (Entity entity : GeneralMethods.getEntitiesAroundPoint(location, 1.5)) {
 			if (entity instanceof LivingEntity && entity.getUniqueId() != player.getUniqueId()) {
 				show();
+				bPlayer.addCooldown(this);
 				remove();
 				return;
 			}
 		}
 		if (GeneralMethods.isSolid(location.getBlock())) {
 			ParticleEffect.FLAME.display(location, 0, 1, 0, 0.3F, 5);
+			bPlayer.addCooldown(this);
 			remove();
 			return;
 		}
