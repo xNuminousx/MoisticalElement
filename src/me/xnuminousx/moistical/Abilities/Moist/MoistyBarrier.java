@@ -85,7 +85,7 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 		}
 		for (Player target : GeneralMethods.getPlayersAroundPoint(location, radius)) {
 			if (((target instanceof LivingEntity)) && (target.getEntityId() != player.getEntityId())) {
-				target.sendTitle(" ", ChatColor.DARK_AQUA + getMessage());
+				player.sendTitle(" ", ChatColor.DARK_AQUA + getMessage());
 				remove();
 			}
 		}
