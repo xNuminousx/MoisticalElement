@@ -1,11 +1,9 @@
-package me.xnuminousx.moistical.Abilities;
+package me.xnuminousx.moistical.api;
 
 import org.bukkit.entity.Player;
 
 import com.projectkorra.projectkorra.Element;
 import com.projectkorra.projectkorra.ability.ElementalAbility;
-
-import me.xnuminousx.moistical.API.MoisticalElement;
 
 public abstract class FestiveAbility  extends ElementalAbility {
 	

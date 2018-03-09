@@ -1,4 +1,4 @@
-package me.xnuminousx.moistical.Abilities.Festive;
+package me.xnuminousx.moistical.ability.festive;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import com.projectkorra.projectkorra.GeneralMethods;
 import com.projectkorra.projectkorra.ability.AddonAbility;
 
-import me.xnuminousx.moistical.Abilities.FestiveAbility;
+import me.xnuminousx.moistical.api.FestiveAbility;
 
 public class MerryMoistmas extends FestiveAbility implements AddonAbility {
 

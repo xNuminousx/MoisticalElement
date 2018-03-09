@@ -1,4 +1,4 @@
-package me.xnuminousx.moistical.Listeners;
+package me.xnuminousx.moistical.listener;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,10 +8,10 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 
 import com.projectkorra.projectkorra.BendingPlayer;
 
-import me.xnuminousx.moistical.Abilities.Festive.MerryMoistmas;
-import me.xnuminousx.moistical.Abilities.Festive.ScaredWet;
-import me.xnuminousx.moistical.Abilities.Moist.MoistSpray;
-import me.xnuminousx.moistical.Abilities.Moist.MoistyBarrier;
+import me.xnuminousx.moistical.ability.moist.MoistSpray;
+import me.xnuminousx.moistical.ability.moist.MoistyBarrier;
+import me.xnuminousx.moistical.ability.festive.MerryMoistmas;
+import me.xnuminousx.moistical.ability.festive.ScaredWet;
 
 public class AbilityListener implements Listener {
 	

@@ -1,4 +1,4 @@
-package me.xnuminousx.moistical.API;
+package me.xnuminousx.moistical.api;
 
 import com.projectkorra.projectkorra.Element;
 import com.projectkorra.projectkorra.ProjectKorra;

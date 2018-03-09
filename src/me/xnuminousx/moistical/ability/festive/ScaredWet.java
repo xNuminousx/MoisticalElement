@@ -1,4 +1,4 @@
-package me.xnuminousx.moistical.Abilities.Festive;
+package me.xnuminousx.moistical.ability.festive;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -20,8 +20,8 @@ import com.projectkorra.projectkorra.ability.AddonAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
-import me.xnuminousx.moistical.Abilities.FestiveAbility;
-import me.xnuminousx.moistical.Listeners.AbilityListener;
+import me.xnuminousx.moistical.api.FestiveAbility;
+import me.xnuminousx.moistical.listener.AbilityListener;
 
 public class ScaredWet extends FestiveAbility implements AddonAbility {
 	

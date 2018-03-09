@@ -1,4 +1,4 @@
-package me.xnuminousx.moistical.Abilities.Moist;
+package me.xnuminousx.moistical.ability.moist;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -16,8 +16,8 @@ import com.projectkorra.projectkorra.ability.AddonAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
-import me.xnuminousx.moistical.Abilities.MoisticalAbility;
-import me.xnuminousx.moistical.Listeners.AbilityListener;
+import me.xnuminousx.moistical.api.MoisticalAbility;
+import me.xnuminousx.moistical.listener.AbilityListener;
 
 public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	
