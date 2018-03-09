@@ -6,8 +6,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.util.Vector;
 
 import com.projectkorra.projectkorra.GeneralMethods;
@@ -30,7 +28,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	private String moistymessage;
 	private String border1;
 	private String border2;
-	private Permission perm;
 	private long time;
 	private long duration;
 
@@ -187,10 +184,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 		
 		//Element console load message
 		ProjectKorra.log.info("Successfully loaded Moistical Element");
-		
-		perm = new Permission("bending.ability.moistspray");
-		ProjectKorra.plugin.getServer().getPluginManager().addPermission(perm);
-		perm.setDefault(PermissionDefault.TRUE);
 		
 		//Element config options
 		ConfigManager.languageConfig.get().addDefault("Chat.Colors.Moistical", "BLUE");

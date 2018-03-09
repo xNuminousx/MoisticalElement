@@ -10,7 +10,6 @@ import com.projectkorra.projectkorra.BendingPlayer;
 
 import me.xnuminousx.moistical.ability.moist.MoistSpray;
 import me.xnuminousx.moistical.ability.moist.MoistyBarrier;
-import me.xnuminousx.moistical.ability.festive.MerryMoistmas;
 import me.xnuminousx.moistical.ability.festive.ScaredWet;
 
 public class AbilityListener implements Listener {
@@ -49,9 +48,6 @@ public class AbilityListener implements Listener {
 			
 		} else if (bPlayer.getBoundAbilityName().equalsIgnoreCase("MoistyBarrier")) {
 			new MoistyBarrier(player);
-			
-		} else if (bPlayer.getBoundAbilityName().equalsIgnoreCase("MerryMoistmas")) {
-			new MerryMoistmas(player);
 		}
 	}
 }

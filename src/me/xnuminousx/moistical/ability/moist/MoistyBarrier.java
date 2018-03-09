@@ -6,8 +6,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -26,8 +24,6 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 	
 	private double radius;
 	private String moistymessage;
-
-	private Permission perm;
 
 	public MoistyBarrier(Player player) {
 		super(player);
@@ -150,10 +146,6 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 	@Override
 	public void load() {
 		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
-		
-		perm = new Permission("bending.ability.moistybarrier");
-		ProjectKorra.plugin.getServer().getPluginManager().addPermission(perm);
-		perm.setDefault(PermissionDefault.TRUE);
 		
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.Cooldown", 5000);
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.MoistyMessage", "You've successfully made another being moist");

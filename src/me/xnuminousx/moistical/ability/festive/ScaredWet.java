@@ -8,8 +8,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Witch;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
@@ -35,7 +33,6 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 	private String spookyTitle;
 	private Material blockType;
 	private byte blockByte;
-	private Permission perm;
 
 	public ScaredWet(Player player) {
 		super(player);
@@ -186,10 +183,6 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 	@Override
 	public void load() {
 		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
-		
-		perm = new Permission("bending.ability.scaredwet");
-		ProjectKorra.plugin.getServer().getPluginManager().addPermission(perm);
-		perm.setDefault(PermissionDefault.TRUE);
 		
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.Cooldown", 8000);
 		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.ScaredWet.Range", 20);
