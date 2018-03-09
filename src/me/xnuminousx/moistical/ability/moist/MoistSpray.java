@@ -9,13 +9,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 import com.projectkorra.projectkorra.GeneralMethods;
-import com.projectkorra.projectkorra.ProjectKorra;
 import com.projectkorra.projectkorra.ability.AddonAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
 import me.xnuminousx.moistical.api.MoisticalAbility;
-import me.xnuminousx.moistical.listener.AbilityListener;
 
 public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	
@@ -180,23 +178,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	}
 	@Override
 	public void load() {
-		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
-		
-		//Element console load message
-		ProjectKorra.log.info("Successfully loaded Moistical Element");
-		
-		//Element config options
-		ConfigManager.languageConfig.get().addDefault("Chat.Colors.Moistical", "BLUE");
-		ConfigManager.languageConfig.get().addDefault("Chat.Colors.Festive", "DARK_PURPLE");
-		ConfigManager.languageConfig.get().addDefault("Chat.Prefixes.Moistical", "[Moist]");
-		
-		//MoistSpray config options
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Cooldown", 5000);
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Border 1", "---");
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.MoistyMessage", "Your body increases in moistiness");
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Border 2", "---");
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.Speed", 1);
-		ConfigManager.defaultConfig.save();
 	}
 	@Override
 	public void stop() {

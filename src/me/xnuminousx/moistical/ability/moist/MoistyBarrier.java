@@ -10,13 +10,11 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import com.projectkorra.projectkorra.GeneralMethods;
-import com.projectkorra.projectkorra.ProjectKorra;
 import com.projectkorra.projectkorra.ability.AddonAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
 import me.xnuminousx.moistical.api.MoisticalAbility;
-import me.xnuminousx.moistical.listener.AbilityListener;
 
 public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 	
@@ -145,11 +143,6 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 	}
 	@Override
 	public void load() {
-		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
-		
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.Cooldown", 5000);
-		ConfigManager.getConfig().addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.MoistyMessage", "You've successfully made another being moist");
-		
 	}
 	@Override
 	public void stop() {
