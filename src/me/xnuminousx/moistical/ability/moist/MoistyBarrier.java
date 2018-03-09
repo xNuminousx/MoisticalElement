@@ -40,7 +40,7 @@ public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
 
 	@Override
 	public void progress() {
-		if (player.isDead() || !player.isOnline()) {
+		if (player.isDead() || !player.isOnline() || GeneralMethods.isRegionProtectedFromBuild(this, player.getLocation())) {
 			remove();
 			return;
 		}
