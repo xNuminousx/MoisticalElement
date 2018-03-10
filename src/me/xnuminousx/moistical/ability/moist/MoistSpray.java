@@ -19,7 +19,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 	
 	private long cooldown;
 	
-	
 	private Location origin;
 	private Location location;
 	private Vector direction;

@@ -19,6 +19,36 @@ public class Handler extends AvatarAbility implements AddonAbility {
 	}
 
 	@Override
+	public void load() {
+		FileConfiguration langConfig = ConfigManager.languageConfig.get();
+		FileConfiguration config = ConfigManager.getConfig();
+		
+		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
+		ProjectKorra.log.info("Successfully loaded Moistical");
+		
+		langConfig.addDefault("Chat.Colors.Moistical", "BLUE");
+		langConfig.addDefault("Chat.Colors.Festive", "DARK_PURPLE");
+		langConfig.addDefault("Chat.Prefixes.Moistical", "[Moist]");
+		
+		config.addDefault("ExtraAbilities.xNuminousx.Cooldown", 5000);
+		config.addDefault("ExtraAbilities.xNuminousx.Border 1", "---");
+		config.addDefault("ExtraAbilities.xNuminousx.MoistyMessage", "Your body increases in moistiness");
+		config.addDefault("ExtraAbilities.xNuminousx.Border 2", "---");
+		config.addDefault("ExtraAbilities.xNuminousx.Speed", 1);
+		
+		config.addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.Cooldown", 5000);
+		config.addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.MoistyMessage", "You've successfully made another being moist");
+		
+		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.Cooldown", 8000);
+		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.Range", 20);
+		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.SpookyTitle", "Jeepers creepers!");
+		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.SpookyMessage", "I'm excreting moisture!!!");
+		
+		ConfigManager.defaultConfig.save();
+		ConfigManager.languageConfig.save();
+	}
+
+	@Override
 	public long getCooldown() {
 		
 		return 0;
@@ -70,39 +100,7 @@ public class Handler extends AvatarAbility implements AddonAbility {
 	}
 
 	@Override
-	public void load() {
-		FileConfiguration langConfig = ConfigManager.languageConfig.get();
-		FileConfiguration config = ConfigManager.getConfig();
-		
-		ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new AbilityListener(), ProjectKorra.plugin);
-		ProjectKorra.log.info("Successfully loaded Moistical");
-		
-		langConfig.addDefault("Chat.Colors.Moistical", "BLUE");
-		langConfig.addDefault("Chat.Colors.Festive", "DARK_PURPLE");
-		langConfig.addDefault("Chat.Prefixes.Moistical", "[Moist]");
-		
-		config.addDefault("ExtraAbilities.xNuminousx.Cooldown", 5000);
-		config.addDefault("ExtraAbilities.xNuminousx.Border 1", "---");
-		config.addDefault("ExtraAbilities.xNuminousx.MoistyMessage", "Your body increases in moistiness");
-		config.addDefault("ExtraAbilities.xNuminousx.Border 2", "---");
-		config.addDefault("ExtraAbilities.xNuminousx.Speed", 1);
-		
-		config.addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.Cooldown", 5000);
-		config.addDefault("ExtraAbilities.xNuminousx.MoistyBarrier.MoistyMessage", "You've successfully made another being moist");
-		
-		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.Cooldown", 8000);
-		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.Range", 20);
-		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.SpookyTitle", "Jeepers creepers!");
-		config.addDefault("ExtraAbilities.xNuminousx.ScaredWet.SpookyMessage", "I'm excreting moisture!!!");
-		
-		ConfigManager.defaultConfig.save();
-		ConfigManager.languageConfig.save();
-	}
-
-	@Override
 	public void stop() {
-		ConfigManager.defaultConfig.save();
-		ConfigManager.languageConfig.save();
 		super.remove();
 	}
 
