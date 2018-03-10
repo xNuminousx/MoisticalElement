@@ -11,12 +11,11 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.projectkorra.projectkorra.GeneralMethods;
 import com.projectkorra.projectkorra.ability.AddonAbility;
+import com.projectkorra.projectkorra.ability.AvatarAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
-import me.xnuminousx.moistical.api.MoisticalAbility;
-
-public class MoistyBarrier extends MoisticalAbility implements AddonAbility {
+public class MoistyBarrier extends AvatarAbility implements AddonAbility {
 	
 	private long cooldown;
 	

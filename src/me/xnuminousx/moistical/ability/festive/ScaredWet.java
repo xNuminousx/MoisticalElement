@@ -14,12 +14,11 @@ import org.bukkit.util.Vector;
 
 import com.projectkorra.projectkorra.GeneralMethods;
 import com.projectkorra.projectkorra.ability.AddonAbility;
+import com.projectkorra.projectkorra.ability.AvatarAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
-import me.xnuminousx.moistical.api.FestiveAbility;
-
-public class ScaredWet extends FestiveAbility implements AddonAbility {
+public class ScaredWet extends AvatarAbility implements AddonAbility {
 	
 	private long cooldown;
 	private Location origin;
@@ -45,7 +44,6 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 	}
 
 	private void setFields() {
-		
 		this.cooldown = ConfigManager.getConfig().getLong("ExtraAbilities.xNuminousx.ScaredWet.Cooldown");
 		this.range = ConfigManager.getConfig().getInt("ExtraAbilities.xNuminousx.ScaredWet.Range");
 		this.spookyTitle = ConfigManager.getConfig().getString("ExtraAbilities.xNuminousx.ScaredWet.SpookyTitle");
@@ -123,6 +121,11 @@ public class ScaredWet extends FestiveAbility implements AddonAbility {
 	public String getTitle() {
 		return spookyTitle;
 		
+	}
+	
+	@Override
+	public boolean isHiddenAbility() {
+		return true;
 	}
 
 	@Override

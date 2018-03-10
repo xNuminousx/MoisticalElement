@@ -10,12 +10,11 @@ import org.bukkit.util.Vector;
 
 import com.projectkorra.projectkorra.GeneralMethods;
 import com.projectkorra.projectkorra.ability.AddonAbility;
+import com.projectkorra.projectkorra.ability.AvatarAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import com.projectkorra.projectkorra.util.ParticleEffect;
 
-import me.xnuminousx.moistical.api.MoisticalAbility;
-
-public class MoistSpray extends MoisticalAbility implements AddonAbility{
+public class MoistSpray extends AvatarAbility implements AddonAbility{
 	
 	private long cooldown;
 	
@@ -61,7 +60,6 @@ public class MoistSpray extends MoisticalAbility implements AddonAbility{
 			bPlayer.addCooldown(this);
 			remove();
 			return;
-			
 		}
 		blast();
 	}
